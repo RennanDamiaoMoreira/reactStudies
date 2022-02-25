@@ -1,11 +1,10 @@
 import React from "react";
-import Social from "./Social";
+import Member from "./componets/Members";
 
 function App() {
   return (
     <div>
-      <h1>Olá mundo</h1>
-      <Social />
+      <Member nome="Visitante"/>
     </div>
   );
 }
