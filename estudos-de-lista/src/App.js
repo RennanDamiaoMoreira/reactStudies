@@ -17,7 +17,7 @@ class App extends Component {
     return (
       <div>
         {this.state.feed.map((item) => {
-          return <Feed atributes={item} />;
+          return <Feed atributes={item}/>;
         })}
       </div>
     );
