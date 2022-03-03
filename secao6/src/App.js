@@ -7,9 +7,13 @@ function App() {
   'estudar  react hooks'
   ]);
 
+  const [input,setInput] = useState('');
   const [nome , setNome] = useState('Rennan');
 
-  function handleAdd (){}
+  function handleAdd(){
+    
+    setTarefas([...tarefas,input]);
+  }
 
   return (
     <div >
@@ -18,7 +22,7 @@ function App() {
         {tarefas.map(tarefa =>(<li key={tarefa}>{tarefa}</li>))}
       </ul>
       <h2>{nome}</h2>
-
+      <input type='text' onChange={(e)=> setInput(e.target.value)}></input>
       <button onClick={handleAdd}>Adicionar</button>
     </div>
   );
