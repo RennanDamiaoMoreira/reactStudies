@@ -1,5 +1,5 @@
 
-import React,{useState, useEffect} from 'react';
+import React,{useState, useEffect, useMemo} from 'react';
 
 function App() {
   const [tarefas, setTarefas]=useState([
@@ -9,11 +9,10 @@ function App() {
 
   const [input,setInput] = useState('');
   const [nome , setNome] = useState('Rennan');
-
+  const totalTarefas = useMemo(()=>tarefas.length, [tarefas]);
   function handleAdd(){
     
     setTarefas([...tarefas,input]);
-    Document.getElementById('aaa').value='';
   }
 
   useEffect(() => {
@@ -32,7 +31,7 @@ function App() {
       <ul>
         {tarefas.map(tarefa =>(<li key={tarefa}>{tarefa}</li>))}
       </ul>
-      <h2>{nome}</h2>
+      <h2>{tarefas.length}</h2>
       <input type='text'id='aaa' onChange={(e)=> {setInput(e.target.value)}}></input>
       <button onClick={handleAdd}>Adicionar</button>
     </div>
