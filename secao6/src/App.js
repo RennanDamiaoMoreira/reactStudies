@@ -1,5 +1,5 @@
 
-import React,{useState, useEffect, useMemo} from 'react';
+import React,{useState, useEffect, useMemo , useCallback} from 'react';
 
 function App() {
   const [tarefas, setTarefas]=useState([
@@ -10,10 +10,11 @@ function App() {
   const [input,setInput] = useState('');
   const [nome , setNome] = useState('Rennan');
   const totalTarefas = useMemo(()=>tarefas.length, [tarefas]);
-  function handleAdd(){
-    
+  
+  const handleAdd = useCallback(()=>{
     setTarefas([...tarefas,input]);
-  }
+    setInput('');
+  },[input,tarefas]);
 
   useEffect(() => {
     const tarefasStorage = localStorage.getItem('tarefas');
@@ -31,7 +32,7 @@ function App() {
       <ul>
         {tarefas.map(tarefa =>(<li key={tarefa}>{tarefa}</li>))}
       </ul>
-      <h2>{tarefas.length}</h2>
+      <h2>{totalTarefas}</h2>
       <input type='text'id='aaa' onChange={(e)=> {setInput(e.target.value)}}></input>
       <button onClick={handleAdd}>Adicionar</button>
     </div>
