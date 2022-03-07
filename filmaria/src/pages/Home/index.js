@@ -29,7 +29,7 @@ export default function Home() {
                             {film.nome}
                         </strong>
                         <img src={film.foto}/>
-                       <Link to={"/film/"}>Acessar</Link>
+                       <Link to={`/film/${film.id}`}>Acessar</Link>
                     </article>
                 )
             })}
